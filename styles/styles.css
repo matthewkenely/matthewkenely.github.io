@@ -7,6 +7,16 @@
     --lightnavy: #121820;
 }
 
+html {
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+}
+
 @font-face {
     font-family: Lato;
     src: local('fonts/LATO-REGULAR.TTF') format('truetype');
@@ -20,14 +30,16 @@
 body {
     margin: auto;
     max-width: 1200px;
-    background-color: var(--navy);;
+    background-color: var(--navy);
+    ;
 
     font-size: 18px;
     font-family: Lato;
 }
 
 main {
-    background: var(--navy);;
+    background: var(--navy);
+    ;
 
     min-height: 85vh;
 
@@ -41,7 +53,7 @@ main {
 hr {
     margin-top: 2em;
     margin-bottom: 2em;
-    
+
     width: 50%;
 }
 
