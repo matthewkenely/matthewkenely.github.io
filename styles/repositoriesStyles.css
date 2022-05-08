@@ -43,11 +43,15 @@ strong {
 }
 
 .grid-item-description {
+    padding-top: 1em;
+
     font-size: 16px;
     color: #dedede;
 }
 
 .star-count {
+    padding-top: 1em;
+    
     display: flex;
     align-items: center;
 }

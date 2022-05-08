@@ -6,8 +6,15 @@ include("header.php");
 ?>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles/headerStyles.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/repositoriesStyles.css">
+    <link rel="stylesheet" href="styles/footerStyles.css">
+
     <link id="icon" rel="icon" href="images/facecropped.png" types="image/icon type">
 
     <title>
@@ -15,17 +22,23 @@ include("header.php");
     </title>
 </head>
 
+<div id="header">
+    <ul id="navbarmenu">
+        <li><a href="./">./</a></li>
+        <li><a href="repositories.html">./Repositories</a></li>
+    </ul>
+</div>
+
 <body>
     <main>
         <div id="repogrid" class="grid-container">
-
         </div>
     </main>
-</body>
 
-<?php
-include("footer.php");
-?>
+    <div id="footer">
+        © 2022&nbsp<a href="./">Matthew Kenely</a>
+    </div>
+</body>
 
 <script>
     function httpGet(theUrl) {
@@ -52,7 +65,7 @@ include("footer.php");
     </svg> \
     ';
 
-    appendRepos = function() {
+    appendRepos = function () {
         for (var i = repos.length - 1; i >= 0; i--) {
             var repo = repos[i];
             console.log(repo);
