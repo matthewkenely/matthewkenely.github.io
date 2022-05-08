@@ -1,11 +1,11 @@
 @font-face {
     font-family: Lato;
-    src: 'fonts/LATO-REGULAR.TTF';
+    src: local('fonts/LATO-REGULAR.TTF') format('truetype');
 }
 
 @font-face {
     font-family: Ubuntu Mono;
-    src: 'fonts/UBUNTUMONO-REGULAR.TTF';
+    src: local('fonts/UBUNTUMONO-REGULAR.TTF') format('truetype');
 }
 
 body {
