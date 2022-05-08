@@ -1,13 +1,13 @@
 a {
     text-decoration: none;
-    color: #5b5b61;
+    color: var(--dim);
 
     transition: .4s;
 }
 
 a:hover {
     text-decoration: none;
-    color: #707076;
+    color: var(--dimselect);
 }
 
 #footer {

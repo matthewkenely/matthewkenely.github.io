@@ -12,6 +12,22 @@ h2 {
     margin-bottom: 2em;
 }
 
+.sociallink svg {
+    stroke: var(--white);
+}
+
+.sociallinkfill svg {
+    fill: var(--white);
+}
+
+.sociallink svg:hover {
+    stroke: var(--whitedim);
+}
+
+.sociallinkfill svg:hover {
+    fill: var(--whitedim);
+}
+
 .sociallink,
 .sociallinkfill {
     padding-left: 10px;
@@ -21,14 +37,6 @@ h2 {
 .sociallink svg,
 .sociallinkfill svg {
     transition: .4s;
-}
-
-.sociallink svg:hover {
-    stroke: #e2e2e2;
-}
-
-.sociallinkfill svg:hover {
-    fill: #e2e2e2;
 }
 
 #social {

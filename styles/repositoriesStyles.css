@@ -31,15 +31,15 @@ strong {
 
     text-align: left;
     font-size: 16px;
-    color: #959598;
-    background: #121820;
+    color: var(--dim);
+    background: var(--lightnavy);
 
     transition: .4s;
 }
 
 .grid-item:hover {
-    color: #959598;
-    background: #0D1117;
+    color: var(--dimselect);
+    background: var(--navy);
 }
 
 .grid-item-description {

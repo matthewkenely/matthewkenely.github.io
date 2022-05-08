@@ -1,3 +1,12 @@
+:root {
+    --white: #ffffff;
+    --whitedim: #e2e2e2;
+    --dim: #5b5b61;
+    --dimselect: #707076;
+    --navy: #0D1117;
+    --lightnavy: #121820;
+}
+
 @font-face {
     font-family: Lato;
     src: local('fonts/LATO-REGULAR.TTF') format('truetype');
@@ -11,14 +20,14 @@
 body {
     margin: auto;
     max-width: 1200px;
-    background-color: #0D1117;
+    background-color: var(--navy);;
 
     font-size: 18px;
     font-family: Lato;
 }
 
 main {
-    background: #0D1117;
+    background: var(--navy);;
 
     min-height: 85vh;
 
@@ -26,7 +35,7 @@ main {
     padding-left: 2em;
     padding-right: 2em;
 
-    color: white;
+    color: var(--white);
 }
 
 hr {
