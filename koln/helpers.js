@@ -72,7 +72,7 @@ collapse = function () {
 resizeCheck = function () {
 
     // Desktop
-    if (window.innerWidth / window.innerHeight > 1.6) {
+    if (window.innerWidth / window.innerHeight > 2) {
         mobilesidenav.style.display = "none";
         sidenav.style.display = "block";
 
@@ -209,3 +209,5 @@ changeLight = function () {
         }
     }
 }
+
+changeLight();

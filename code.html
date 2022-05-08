@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<?php
+include("header.php");
+?>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles/headerStyles.css">
+    <link rel="stylesheet" href="styles/footerStyles.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/codeStyles.css">
+    <link id="icon" rel="icon" href="images/facecropped.png" types="image/icon type">
+
+    <title>
+        Code • Matthew Kenely
+    </title>
+
+</head>
+
+<div id="header">
+    <ul id="navbarmenu">
+        <li><a href="./">./</a></li>
+        <li><a href="repositories.html">./Repositories</a></li>
+        <li><a href="code.html">./Code</a></li>
+    </ul>
+</div>
+
+<body>
+    <main>
+        <a href="#" class="collapsible">
+            <h3>Köln</h3>
+        </a>
+        <div id="kolncontainer">
+            <iframe id="koln" src="koln/KolnHome.html"></iframe>
+        </div>
+        <hr>
+    </main>
+
+    <div id="footer">
+        © 2022&nbsp<a href="./">Matthew Kenely</a>
+    </div>
+</body>
+
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = "100%";
+            }
+        });
+    }
+</script>
+
+</html>

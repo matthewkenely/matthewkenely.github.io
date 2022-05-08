@@ -335,7 +335,7 @@ b {
     transition: 0.4s;
 }
 
-@media screen and (max-aspect-ratio: 8/5) {
+@media screen and (max-aspect-ratio: 2/1) {
     #maininfo {
         padding-top: 20px;
         padding-bottom: 20px;

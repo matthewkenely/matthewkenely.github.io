@@ -11,9 +11,9 @@ include("header.php");
     <meta name="viewport" content="height=device-height, initial-scale=1">
 
     <link rel="stylesheet" href="styles/headerStyles.css">
+    <link rel="stylesheet" href="styles/footerStyles.css">
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/repositoriesStyles.css">
-    <link rel="stylesheet" href="styles/footerStyles.css">
 
     <link id="icon" rel="icon" href="images/facecropped.png" types="image/icon type">
 
@@ -26,6 +26,7 @@ include("header.php");
     <ul id="navbarmenu">
         <li><a href="./">./</a></li>
         <li><a href="repositories.html">./Repositories</a></li>
+        <li><a href="code.html">./Code</a></li>
     </ul>
 </div>
 
@@ -88,7 +89,7 @@ include("header.php");
             if (!output) {
                 continue;
             }
-            
+
             if (description !== null) {
                 document.getElementById("repogrid").innerHTML += '\
             <a href="' + repo.html_url + '" target="_blank"> \

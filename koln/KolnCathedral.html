@@ -78,7 +78,7 @@
     </header>
 
     <div id="readarea"
-        style="background-image: url(images/mydomelight.png); background-size: cover; background-repeat: no-repeat">
+        style="background-image: url(images/mydomedark.png); background-size: cover; background-repeat: no-repeat">
         <div id="maininfo">
             <h1 class="maininfoheader">
                 Kölner Dom
@@ -90,7 +90,8 @@
                 Archdiocese of Cologne. It is a renowned monument of German Catholicism and Gothic architecture and was
                 declared a World Heritage Site in 1996. It is Germany's most visited landmark, attracting an average of
                 20,000 people a day. At <b>157m</b>, the cathedral is currently the tallest twin-spired church in the
-                world, the second tallest church in Europe after Ulm Minster, and <b>the third tallest church in the world</b>.
+                world, the second tallest church in Europe after Ulm Minster, and <b>the third tallest church in the
+                    world</b>.
                 It is the largest Gothic church in Northern Europe and has the second-tallest spires. The towers for its
                 two huge spires give the cathedral the largest façade of any church in the world. The choir has the
                 largest height to width ratio, 3.6:1, of any medieval church.
@@ -112,11 +113,34 @@
             </h1>
 
             <p class="info">
-                 <b>Ancient site</b><br>
-                 When construction began on the present Cologne Cathedral in 1248 with foundation stone, the site had already been occupied by several previous structures. The earliest may have been for grain storage and possibly was succeeded by a Roman temple built by Mercurius Augustus. From the 4th century on, however, the site was occupied by Christian buildings, including a square edifice known as the "oldest cathedral" that was commissioned by Maternus, the first bishop of Cologne. A free-standing baptistery dating back to the 7th century was located at the east end of the present cathedral but was demolished in the 9th century to build the second cathedral. During excavations of the present cathedral, graves were discovered in the location of the oldest portion of the building; including that of a boy that was richly adorned with grave goods and another of a woman, popularly thought to be Wisigard. Both graves are thought to be from the 6th century. Only ruins of the baptistery and the octagonal baptismal font remain today.  The second church, called the "Old Cathedral", was completed in 818. It was destroyed by fire on 30 April 1248, during demolition work to prepare for a new cathedral.
-                 <br><br>
-                 <b>Medieval beginning</b><br>
-                 In 1164, the Archbishop of Cologne, Rainald of Dassel, acquired the relics of the Three Kings which the Holy Roman Emperor, Frederick Barbarossa, had taken from the Basilica of Sant'Eustorgio, Milan, Italy. (Parts of the relics have since been returned to Milan.) The relics have great religious significance and drew pilgrims from all over Christendom. It was important to church officials that they be properly housed, and thus began a building program in the new style of Gothic architecture, based in particular on the French cathedral of Amiens.  The foundation stone was laid on 15 August 1248, by Archbishop Konrad von Hochstaden. The eastern arm was completed under the direction of Master Gerhard, was consecrated in 1322 and sealed off by a temporary wall so it could be used as the work continued. Eighty-four misericords in the choir date from this building phase.  In the mid-14th century work on the west front commenced under Master Michael. This work ceased in 1473, leaving the south tower complete to the belfry level and crowned with a huge crane that remained in place as a landmark of the Cologne skyline for 400 years. Some work proceeded intermittently on the structure of the nave between the west front and the eastern arm, but during the 16th century this also stopped.  
+                <b>Ancient site</b><br>
+                When construction began on the present Cologne Cathedral in 1248 with foundation stone, the site had
+                already been occupied by several previous structures. The earliest may have been for grain storage and
+                possibly was succeeded by a Roman temple built by Mercurius Augustus. From the 4th century on, however,
+                the site was occupied by Christian buildings, including a square edifice known as the "oldest cathedral"
+                that was commissioned by Maternus, the first bishop of Cologne. A free-standing baptistery dating back
+                to the 7th century was located at the east end of the present cathedral but was demolished in the 9th
+                century to build the second cathedral. During excavations of the present cathedral, graves were
+                discovered in the location of the oldest portion of the building; including that of a boy that was
+                richly adorned with grave goods and another of a woman, popularly thought to be Wisigard. Both graves
+                are thought to be from the 6th century. Only ruins of the baptistery and the octagonal baptismal font
+                remain today. The second church, called the "Old Cathedral", was completed in 818. It was destroyed by
+                fire on 30 April 1248, during demolition work to prepare for a new cathedral.
+                <br><br>
+                <b>Medieval beginning</b><br>
+                In 1164, the Archbishop of Cologne, Rainald of Dassel, acquired the relics of the Three Kings which the
+                Holy Roman Emperor, Frederick Barbarossa, had taken from the Basilica of Sant'Eustorgio, Milan, Italy.
+                (Parts of the relics have since been returned to Milan.) The relics have great religious significance
+                and drew pilgrims from all over Christendom. It was important to church officials that they be properly
+                housed, and thus began a building program in the new style of Gothic architecture, based in particular
+                on the French cathedral of Amiens. The foundation stone was laid on 15 August 1248, by Archbishop Konrad
+                von Hochstaden. The eastern arm was completed under the direction of Master Gerhard, was consecrated in
+                1322 and sealed off by a temporary wall so it could be used as the work continued. Eighty-four
+                misericords in the choir date from this building phase. In the mid-14th century work on the west front
+                commenced under Master Michael. This work ceased in 1473, leaving the south tower complete to the belfry
+                level and crowned with a huge crane that remained in place as a landmark of the Cologne skyline for 400
+                years. Some work proceeded intermittently on the structure of the nave between the west front and the
+                eastern arm, but during the 16th century this also stopped.
             </p><br>
 
             <h1 class="maininfoheader">
@@ -169,6 +193,8 @@
                 sidenavbutton.style.color = "#f1f1f1";
                 darkmodebutton.style.color = "#f1f1f1";
 
+                bottombackground.style.backgroundColor = "#303133"
+
                 for (var i = 0; i < all_maininfoheaders.length; i++) {
                     all_info[i].style.color = "#e2e2e2";
                 }
@@ -189,6 +215,8 @@
 
                 sidenavbutton.style.color = "#1F1F21";
                 darkmodebutton.style.color = "#1F1F21";
+
+                bottombackground.style.backgroundColor = "#e2e2e2"
 
                 for (var i = 0; i < all_maininfoheaders.length; i++) {
                     all_info[i].style.color = "#353535";
