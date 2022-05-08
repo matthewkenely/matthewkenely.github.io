@@ -1,0 +1,54 @@
+form {
+    font-family: "Raleway";
+    line-height: 72px;
+}
+
+input {
+    color: #303133;
+    padding: 20px;
+    font-size: 14px;
+    font-family: "Raleway";
+    border: none;
+}
+
+#message {
+    color: #303133;
+    padding: 20px;
+    font-size: 14px;
+    font-family: "Raleway";
+    border: none;
+    width: 80%;
+    height: 64px;
+    resize: vertical;
+}
+
+#submitreview {
+    color: #f1f1f1;
+    background-color: #303133;
+    text-decoration: none;
+
+    border: none;
+    display: inline-block;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-family: "Raleway";
+    font-weight: 600;
+
+    padding: 16px;
+
+    text-align: center;
+    text-transform: uppercase;
+
+    cursor: pointer;
+
+    transition-duration: .4s;
+}
+
+#submitreview:hover {
+    color: #303133;
+    background-color: transparent;
+}
+
+#reviewsection {
+    
+}

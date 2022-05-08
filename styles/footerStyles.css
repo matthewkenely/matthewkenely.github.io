@@ -1,0 +1,36 @@
+a {
+    text-decoration: none;
+    color: #5b5b61;
+
+    transition: .4s;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #707076;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 5vh;
+
+    font-family: Ubuntu Mono;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: none;
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #5b5b61;
+    background: #0D1117;
+}
+
+@media screen and (max-aspect-ratio: 8/5) {
+    #footer {
+        height: 5vh;
+    }
+}

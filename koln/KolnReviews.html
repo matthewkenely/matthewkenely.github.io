@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="KolnStyles.css">
+    <link rel="stylesheet" href="KolnReviewsStyles.css">
+    <link rel="icon" href="images/Kölner_Dom_von_Osten.jpg">
+    <title>
+        Köln - Reviews
+    </title>
+</head>
+
+<body id="body" onload="resizeCheck()">
+    <button id="collapsible" onclick="collapse(); buttonCheck()"> &lt </button>
+
+    <header>
+        <div id="sidenav" style="width: 18%; display: block">
+            <div class="sidenavcontainer">
+                <h1 class="maintitle">
+                    <a href="KolnHome.html" class="maintitle">Köln</a>
+                </h1>
+
+                <div class="bottominfo">
+                    <a href="KolnCathedral.html">
+                        <button class="pagebutton">
+                            The <b>Cathedral</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnTransport.html">
+                        <button class="pagebutton">
+                            The <b>Transport</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnReviews.html">
+                        <button class="pagebutton">
+                            <b>Reviews</b>
+                        </button>
+                    </a><br>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobilesidenav" style="width: 100%; display: block">
+            <div class="sidenavcontainer">
+                <h1 class=maintitle>
+                    <a href="KolnHome.html" class="maintitle">Köln</a>
+                </h1>
+
+                <div class="bottominfo">
+                    <a href="KolnCathedral.html">
+                        <button class="pagebutton">
+                            The <b>Cathedral</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnTransport.html">
+                        <button class="pagebutton">
+                            The <b>Transport</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnReviews.html">
+                        <button class="currentpagebutton">
+                            <b>Reviews</b>
+                        </button>
+                    </a><br>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottombackground"></div>
+
+        <button id="darkmodebutton" style="color: #1F1F21" onclick="changeLight()">☼</button>
+
+    </header>
+
+    <div id="readarea">
+        <div id="maininfo">
+            <div id="reviewform">
+                <form action="#" method="POST">
+                    <input class="formfield" type="text" name="name" placeholder="Name" />
+                    <br>
+                    <textarea id="message" type="text" name="message" placeholder="Message"> </textarea>
+                    <br>
+                    <button id="submitreview" value="Submit">Submit</button>
+                </form>
+            </div>
+
+            <hr>
+
+            <div id="reviewsection">
+
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="helpers.js"></script>
+
+    <script>
+        reviews = document.getElementById("reviewsection");
+
+        function readTextFile(file, callback) {
+            var rawFile = new XMLHttpRequest();
+            rawFile.overrideMimeType("application/json");
+            rawFile.open("GET", file, true);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState === 4 && rawFile.status == "200") {
+                    callback(rawFile.responseText);
+                }
+            }
+            rawFile.send(null);
+        }
+
+        readTextFile("reviews.json", function (text) {
+            var reviews_json = JSON.parse(text);
+
+            for (var i = reviews_json.reviews.length - 1; i >= 0; i--) {
+                console.log(reviews_json.reviews[i].name);
+                console.log(reviews_json.reviews[i].message);
+
+                reviews.innerHTML +=
+                    "<p class='info'>"
+                    + "<b>" + reviews_json.reviews[i].name + "</b> "
+                    + "<small>on <b>"
+                    + reviews_json.reviews[i].date
+                    + "</b> at <b>"
+                    + reviews_json.reviews[i].time
+                    + "</b></small>"
+                    + "<br>"
+                    + reviews_json.reviews[i].message
+                    + "</p>";
+            }
+        });
+
+    </script>
+
+    <script>
+        let all_fields = document.getElementsByClassName("formfield")
+
+        changeLight = function () {
+            // Light mode --> Dark mode
+            if (!darkmode) {
+                darkmode = true;
+
+                body.style.backgroundColor = "#303133";
+                readarea.style.backgroundColor = "#2c2d2f";
+
+                sidenavbutton.style.color = "#f1f1f1";
+                darkmodebutton.style.color = "#f1f1f1";
+
+                bottombackground.style.backgroundColor = "#303133"
+
+                for (var i = 0; i < all_fields.length; i++) {
+                    all_fields[i].style.color = "#f1f1f1";
+                }
+
+                for (var i = 0; i < all_fields.length; i++) {
+                    all_fields[i].style.backgroundColor = "#303133";
+                }
+
+                message.style.color = "#f1f1f1";
+                message.style.backgroundColor = "#303133";
+
+                submitreview.style.color = "#303133";
+                submitreview.style.backgroundColor = "#f1f1f1";
+
+                submitreview.addEventListener("mouseenter", e => {
+                    submitreview.style.color = "#f1f1f1";
+                    submitreview.style.backgroundColor = "transparent";
+                })
+
+                submitreview.addEventListener("mouseleave", e => {
+                    submitreview.style.color = "#303133";
+                    submitreview.style.backgroundColor = "#f1f1f1";
+                })
+
+                for (var i = 0; i < all_info.length; i++) {
+                    all_info[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_maininfoheaders.length; i++) {
+                    all_maininfoheaders[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_pagelinks.length; i++) {
+                    all_pagelinks[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_pagelinkimgs.length; i++) {
+                    all_pagelinkimgs[i].src = "images/pageicondarkmode.png";
+                }
+            }
+
+            // Dark mode --> Light mode
+            else {
+                darkmode = false;
+
+                body.style.backgroundColor = "#e2e2e2";
+                readarea.style.backgroundColor = "#f1f1f1";
+
+                sidenavbutton.style.color = "#1F1F21";
+                darkmodebutton.style.color = "#1F1F21";
+
+                bottombackground.style.backgroundColor = "#e2e2e2"
+
+                for (var i = 0; i < all_fields.length; i++) {
+                    all_fields[i].style.color = "#303133";
+                }
+
+                for (var i = 0; i < all_fields.length; i++) {
+                    all_fields[i].style.backgroundColor = "white";
+                }
+
+                message.style.color = "#303133";
+                message.style.backgroundColor = "white";
+
+                submitreview.style.color = "#f1f1f1";
+                submitreview.style.backgroundColor = "#303133";
+
+                submitreview.addEventListener("mouseenter", e => {
+                    submitreview.style.color = "#303133";
+                    submitreview.style.backgroundColor = "transparent";
+                })
+
+                submitreview.addEventListener("mouseleave", e => {
+                    submitreview.style.color = "#f1f1f1";
+                    submitreview.style.backgroundColor = "#303133";
+                })
+
+                for (var i = 0; i < all_info.length; i++) {
+                    all_info[i].style.color = "#353535";
+                }
+
+                for (var i = 0; i < all_maininfoheaders.length; i++) {
+                    all_maininfoheaders[i].style.color = "#464646";
+                }
+
+                for (var i = 0; i < all_pagelinks.length; i++) {
+                    all_pagelinks[i].style.color = "#353535";
+                }
+
+                for (var i = 0; i < all_pagelinkimgs.length; i++) {
+                    all_pagelinkimgs[i].src = "images/pageiconlightmode.png";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>

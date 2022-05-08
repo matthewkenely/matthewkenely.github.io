@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="KolnStyles.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <link rel="icon" href="images/Kölner_Dom_von_Osten.jpg">
+    <title>
+        Köln
+    </title>
+</head>
+
+<body id="body" onload="resizeCheck()">
+    <button id="collapsible" onclick="collapse(); buttonCheck()"> &lt </button>
+
+    <header>
+        <div id="sidenav" style="width: 18%; display: block">
+            <div class="sidenavcontainer">
+                <h1 class="maintitle">
+                    <a href="KolnHome.html" class="maintitle">Köln</a>
+                </h1>
+
+                <div class="bottominfo">
+                    <a href="KolnCathedral.html">
+                        <button class="pagebutton">
+                            The <b>Cathedral</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnTransport.html">
+                        <button class="pagebutton">
+                            The <b>Transport</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnReviews.html">
+                        <button class="pagebutton">
+                            <b>Reviews</b>
+                        </button>
+                    </a><br>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobilesidenav" style="width: 100%; display: none">
+            <div class="sidenavcontainer">
+                <h1 class=maintitle>
+                    <a href="KolnHome.html" class="maintitle">Köln</a>
+                </h1>
+
+                <div class="bottominfo">
+                    <a href="KolnCathedral.html">
+                        <button class="pagebutton">
+                            The <b>Cathedral</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnTransport.html">
+                        <button class="pagebutton">
+                            The <b>Transport</b>
+                        </button>
+                    </a><br>
+
+                    <a href="KolnReviews.html">
+                        <button class="pagebutton">
+                            <b>Reviews</b>
+                        </button>
+                    </a><br>
+                </div>
+            </div>
+        </div>
+
+        <div id="bottombackground"></div>
+
+        <button id="darkmodebutton" style="color: #1F1F21" onclick="changeLight()">☼</button>
+
+    </header>
+
+    <div id="readarea">
+        <div id="maininfo">
+
+            <h1 class="maininfoheader">
+                About Cologne
+            </h1>
+
+            <p class="info">
+                Cologne is a city in <b>Germany</b>. It is the largest city of Germany's most populous state
+                of North Rhine-Westphalia and the fourth-most populous city and one of the oldest in Germany. With
+                <b>3.6 million people</b> in the urban region and 1.1 million inhabitants within its city proper,
+                Cologne is
+                the largest city on the river Rhine and also the most populous city of both the Rhine-Ruhr Metropolitan
+                Region and the Rhineland. Centered on the west bank of the Rhine, Cologne is about 35 km
+                southeast of NRW's state capital Düsseldorf and 25 km northwest of Bonn. The city's medieval Catholic
+                <b><a class="pagelink" href="KolnCathedral.html">Cologne Cathedral <img class="pagelinkimg"
+                            src="images/pageiconlightmode.png" style="width: 12px"></a></b>, the third-tallest
+                church and tallest cathedral in the world, constructed to house the Shrine of the Three Kings, is a
+                globally recognized landmark and one of the most visited sights and pilgrimage destinations in Europe.
+                The cityscape is further shaped by the Twelve Romanesque churches of Cologne, and Cologne is famous for
+                Eau de Cologne, that has been produced in the city since 1709, and "cologne" has since come to be a
+                generic term.
+            </p><br>
+
+            <h1 class="maininfoheader">
+                Weather in Cologne
+            </h1>
+
+            <div style="overflow: hidden; display: flex; align-items: center; margin-top: -20px">
+                <!-- overflow: hidden prevents height of 0 due to children being floated -->
+                <div id="weatherarea" style="width: 70%; float: left">
+                    <div id="weatherapi"></div>
+                </div>
+
+                <div id="clockarea" style="width: 30%; height:50%; float: right; padding-right: 0%">
+                    <div id="clockContainer">
+                        <div id="hour"></div>
+                        <div id="minute"></div>
+                        <div id="second"></div>
+                    </div>
+                </div>
+            </div><br>
+
+            <h1 class="maininfoheader">
+                Map of Cologne
+            </h1>
+
+            <div id="map" style="border: 3px solid #161616;"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="helpers.js"></script>
+
+    <script>
+        /* Live Koln Clock */
+        clockFunction = function () {
+            var date = new Date();
+            var utcTime = date.getTime() + (date.getTimezoneOffset() * 60000);
+            var timeOffset = 13;
+            var d = new Date(utcTime + (3600000 * timeOffset));
+
+            hr = d.getHours();
+            min = d.getMinutes();
+            sec = d.getSeconds();
+
+            hr_rotation = 30 * hr + min / 2;
+            min_rotation = 6 * min;
+            sec_rotation = 6 * sec;
+
+            hour.style.transform = `rotate(${hr_rotation}deg)`;
+            minute.style.transform = `rotate(${min_rotation}deg)`;
+            second.style.transform = `rotate(${sec_rotation}deg)`;
+
+            clockarea.title = ("" + hr).slice(-2) + ":" + ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2);
+        };
+
+        clockFunction();
+        setInterval(clockFunction, 1000);
+
+    </script>
+
+    <script>
+        /* Weather API */
+        weatherFunction = function () {
+            var request = new XMLHttpRequest();
+            var hpath = "https://api.weatherapi.com/v1/forecast.json?key=c528b8ed2c444358890112841210312&q=50.94138654609444,6.958281398304354&days=1&aqi=no&alerts=no"
+            var api;
+            var weatherapi = document.getElementById("weatherapi")
+
+            request.open("GET", hpath, false);
+            request.send();
+
+            api = JSON.parse(request.responseText);
+
+            if (darkmode) {
+                weatherapi.innerHTML = "<p class='info' style='color: #e2e2e2'>"
+                    + "Condition: <b>" + api.current.condition.text + "</b> "
+                    + "<img src=https://" + api.current.condition.icon + " style='width: 24px; height: 24px'><br>"
+                    + "Current temperature: <b>" + api.current.temp_c + "°C</b> <small>[feels like " + api.current.feelslike_c + "°C]</small><br>"
+                    + "Wind speed: <b>" + api.current.wind_kph + "km/h</b> <small>[" + api.current.wind_dir + "]</small><br>"
+                    + "UV Index: <b>" + api.current.uv + "</b><br>"
+                    + "Visibility: <b>" + api.current.vis_km + "km</b><br>"
+                    + "<small>Last Checked: " + ("" + hr).slice(-2) + ":" + ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2) + "</small><br>"
+            }
+
+            else {
+                weatherapi.innerHTML = "<p class='info'>"
+                    + "Condition: <b>" + api.current.condition.text + "</b> "
+                    + "<img src=https://" + api.current.condition.icon + " style='width: 24px; height: 24px'><br>"
+                    + "Current temperature: <b>" + api.current.temp_c + "°C</b> <small>[feels like " + api.current.feelslike_c + "°C]</small><br>"
+                    + "Wind speed: <b>" + api.current.wind_kph + "km/h</b> <small>[" + api.current.wind_dir + "]</small><br>"
+                    + "UV Index: <b>" + api.current.uv + "</b><br>"
+                    + "Visibility: <b>" + api.current.vis_km + "km</b><br>"
+                    + "<small>Last Checked: " + ("" + hr).slice(-2) + ":" + ("0" + min).slice(-2) + ":" + ("0" + sec).slice(-2) + "</small><br>"
+            }
+        };
+
+        weatherFunction();
+        setInterval(weatherFunction, 30000); // Weather display is updated every 30 seconds
+    </script>
+
+    <script>
+        /* Map API */
+        var map = L.map('map').setView([50.941310889912586, 6.958274487550246], 20);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var mainIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        var smallIcon = new L.Icon({
+            iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+            shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+            iconSize: [25, 41],
+            iconAnchor: [12, 41],
+            popupAnchor: [1, -34],
+            shadowSize: [41, 41]
+        });
+
+        /* Leaflet API */
+        L.marker([50.941310889912586, 6.958274487550246], {
+            icon: mainIcon
+        }).addTo(map).bindPopup('The Cathedral').openPopup();
+
+        var request = new XMLHttpRequest();
+        var hpath = "http://api.geonames.org/findNearbyWikipediaJSON?formatted=true&lat=50.941310889912586&lng=6.958274487550246&username=matthewkenely&style=full&wikipediaURL=https://en.wikipedia.org/wiki/Cologne&feature=null"
+        var api;
+
+        request.open("GET", hpath, false);
+        request.send();
+
+        var locations = JSON.parse(request.responseText);
+
+        for (i = 0; i < locations.geonames.length; i++) {
+            L.marker([locations.geonames[i].lat, locations.geonames[i].lng], {
+                icon: smallIcon
+            }).addTo(map).bindPopup(locations.geonames[i].title)
+        }
+    </script>
+
+    <script>
+        /* Overriding to also set clock according to light mode */
+        changeLight = function () {
+
+            // Light mode --> Dark mode
+            if (!darkmode) {
+                darkmode = true;
+
+                body.style.backgroundColor = "#303133";
+                readarea.style.backgroundColor = "#2c2d2f";
+
+                sidenavbutton.style.color = "#e2e2e2";
+                darkmodebutton.style.color = "#e2e2e2";
+
+                bottombackground.style.backgroundColor = "#303133"
+
+                hour.style.background = "#e2e2e2";
+                minute.style.background = "#e2e2e2";
+                second.style.background = "#e2e2e2";
+
+                clockContainer.style.backgroundImage = "url(images/clockdarkmode.png)";
+
+                document.getElementById("map").style.border = "3px solid #e2e2e2";
+
+                for (var i = 0; i < all_info.length; i++) {
+                    all_info[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_maininfoheaders.length; i++) {
+                    all_maininfoheaders[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_pagelinks.length; i++) {
+                    all_pagelinks[i].style.color = "#e2e2e2";
+                }
+
+                for (var i = 0; i < all_pagelinkimgs.length; i++) {
+                    all_pagelinkimgs[i].src = "images/pageicondarkmode.png";
+                }
+            }
+
+            // Dark mode --> Light mode
+            else {
+                darkmode = false;
+
+                body.style.backgroundColor = "#e2e2e2";
+                readarea.style.backgroundColor = "#f1f1f1";
+
+                sidenavbutton.style.color = "#1F1F21";
+                darkmodebutton.style.color = "#1F1F21";
+
+                bottombackground.style.backgroundColor = "#e2e2e2"
+
+                hour.style.background = "#1F1F21";
+                minute.style.background = "#1F1F21";
+                second.style.background = "#1F1F21";
+
+                clockContainer.style.backgroundImage = "url(images/clocklightmode.png)"
+
+                document.getElementById("map").style.border = "3px solid #161616";
+
+                for (var i = 0; i < all_info.length; i++) {
+                    all_info[i].style.color = "#353535";
+                }
+
+                for (var i = 0; i < all_maininfoheaders.length; i++) {
+                    all_maininfoheaders[i].style.color = "#464646";
+                }
+
+                for (var i = 0; i < all_pagelinks.length; i++) {
+                    all_pagelinks[i].style.color = "#353535";
+                }
+
+                for (var i = 0; i < all_pagelinkimgs.length; i++) {
+                    all_pagelinkimgs[i].src = "images/pageiconlightmode.png";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

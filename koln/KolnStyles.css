@@ -1,0 +1,384 @@
+html {
+    scroll-behavior: smooth;
+}
+
+@font-face {
+    font-family: "Netflix Sans";
+    src: url("fonts/NetflixSans-Regular.otf")
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url("fonts/Raleway-Medium.ttf")
+}
+
+@font-face {
+    font-family: "Merriweather";
+    src: url("fonts/Merriweather-Regular.ttf")
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("fonts/OpenSans-Regular.ttf")
+}
+
+body {
+    background-color: #e2e2e2;
+    margin: 0px;
+    transition: 0.4s;
+    overflow-y: overlay;
+    /* scroll doesn't affect page width */
+}
+
+#sidenav {
+    display: block;
+
+    /* structure */
+    height: 100%;
+    width: 18%;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #1F1F21;
+    overflow-x: hidden;
+    padding-top: 0px;
+
+    /* text */
+    text-align: center;
+    text-transform: uppercase;
+
+    transition-duration: 0.4s;
+}
+
+#clockContainer {
+    position: relative;
+    margin: auto;
+    height: 12vmax;
+    width: 12vmax;
+    background-image: url(images/clocklightmode.png);
+    background-size: 100%;
+}
+
+#hour,
+#minute,
+#second {
+    position: absolute;
+    background: black;
+    border-radius: 10px;
+    transform-origin: bottom;
+}
+  
+#hour {
+    width: 1%;
+    height: 25%;
+    top: 24.7%;
+    left: 50%;
+    opacity: 1;
+}
+  
+#minute {
+    width: 1%;
+    height: 30%;
+    top: 20.5%;
+    left: 50%;
+    opacity: 1;
+}
+  
+#second {
+    width: 1%;
+    height: 40%;
+    top: 10%;
+    left: 50%;
+    opacity: 1;
+}
+
+#map {
+    margin-top: 18px;
+    height: 512px;
+    border: 3px solid #161616;
+    z-index: 1;
+}
+
+#readarea {
+    height: 100%;
+    margin-left: 18%;
+    margin-right: 18%;
+    background-color: #f1f1f1;
+    transition: 0.4s;
+}
+
+#maininfo {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 100%;
+    line-height: 32px;
+    overflow: auto;
+}
+
+#weatherapi {
+    padding: 0px;
+    font-family: "Open Sans";
+    font-size: 20px;
+    color: #353535;
+    text-align: justify;
+    transition: 0.4s;
+}
+
+#mobilesidenav {
+    display: none;
+
+    /* structure */
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    background-color: #1F1F21;
+    overflow-x: hidden;
+    padding-top: 0px;
+
+    /* text */
+    text-align: center;
+    text-transform: uppercase;
+
+    transition: 0.4s;
+}
+
+#bottombackground {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    bottom: 0px;
+    background-color: #e2e2e2;
+    width: 100%;
+    height: 55px;
+    transition: 0.4s;
+}
+
+#collapsible {
+    color: #1F1F21;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 16px;
+    padding-left: 18%;
+    border: none;
+    bottom: 0px;
+    left: 0px;
+    z-index: 3;
+    text-align: middle;
+    outline: none;
+    font-size: 15px;
+    font-family: "Raleway";
+    position: fixed;
+    transition: 0.4s;
+}
+
+#collapsible:hover {
+    animation: bounceright 0.8s normal ease-out;
+}
+
+@keyframes bounceright {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(+10px);
+    }
+}
+
+#darkmodebutton {
+    background-color: transparent;
+    color: #1F1F21;
+    cursor: pointer;
+    padding: 16px;
+    padding-left: none;
+    border: none;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
+    text-align: middle;
+    outline: none;
+    font-size: 20px;
+    font-family: "Open Sans";
+    position: fixed;
+    transition: 0.4s;
+    font-weight: 1000;
+
+    animation: bounce 0.8s normal ease-out;
+}
+
+#darkmodebutton:hover {
+    animation: bounceleft 0.8s normal ease-out;
+}
+
+@keyframes bounceleft {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(0);
+    }
+
+    10% {
+        transform: translateX(-10px);
+    }
+}
+
+.maintitle {
+    font-family: "netflix sans";
+    font-size: 58px;
+    font-weight: 440;
+    letter-spacing: 16px;
+    padding-bottom: 16px;
+    padding-top: 10px;
+
+    transition-duration: .4s;
+}
+
+.maintitle:hover {
+    color: #d1d1d1;
+}
+
+.bottominfo {
+    line-height: 64px;
+    letter-spacing: 2px;
+    font-weight: 5px;
+    font-size: 20px;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.pagelink {
+    color: #353535;
+    transition: 0.4s;
+    font-weight: 1000;
+}
+
+.pagelink:hover {
+    text-decoration: underline;
+}
+
+b {
+    font-weight: 700;
+}
+
+.currentpagebutton {
+    color: #212121;
+    text-decoration: none;
+
+    border: none;
+    display: inline-block;
+    line-height: 64px;
+    letter-spacing: 4px;
+    font-size: 18px;
+    font-family: "Raleway";
+
+    text-align: center;
+    text-transform: uppercase;
+
+    background-color: #f1f1f1;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    transition-duration: .4s;
+}
+
+.pagebutton {
+    color: #FFFFFF;
+    text-decoration: none;
+
+    border: none;
+    display: inline-block;
+    line-height: 64px;
+    letter-spacing: 4px;
+    font-size: 18px;
+    font-family: "Raleway";
+
+    text-align: center;
+    text-transform: uppercase;
+
+    background-color: #1F1F21;
+
+    cursor: pointer;
+
+    width: 100%;
+
+    transition-duration: .4s;
+}
+
+.pagebutton:hover {
+    color: #212121;
+    background-color: #f1f1f1;
+}
+
+.maininfoheader {
+    font-family: "Merriweather";
+    font-size: 30px;
+    color: #464646;
+    text-align: justify;
+    font-weight: 600px;
+    transition: 0.4s;
+}
+
+.info {
+    font-family: "Open Sans";
+    font-size: 18px;
+    color: #353535;
+    text-align: justify;
+    transition: 0.4s;
+}
+
+@media screen and (max-aspect-ratio: 8/5) {
+    #maininfo {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+        padding-right: 40px;
+        line-height: 24px;
+        font-size: 2px;
+    }
+
+    #collapsible {
+        background-color: transparent;
+        color: #1F1F21;
+        z-index: 4;
+    }
+
+    #bottombackground {
+        display: block;
+    }
+
+    #readarea {
+        height: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        background-color: #f1f1f1;
+        transition: 0.4s;
+    }
+
+    #map {
+        margin-bottom: 64px;
+    }
+
+    .maininfoheader {
+        font-family: "Merriweather";
+        font-size: 30px;
+        color: #464646;
+        text-align: justify;
+        font-weight: 600px;
+    }
+
+    .info {
+        font-family: "Raleway";
+        font-size: 18px;
+        color: #353535;
+        text-align: justify;
+    }
+}
