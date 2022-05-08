@@ -65,13 +65,30 @@ include("header.php");
     </svg> \
     ';
 
+    var exclude = ['https://github.com/matthewkenely/matthewkenely.github.io'];
+
     appendRepos = function () {
         for (var i = repos.length - 1; i >= 0; i--) {
+            var output = true;
+
             var repo = repos[i];
             console.log(repo);
 
             var description = repo.description;
 
+            for (let i = 0; i < exclude.length; i++) {
+                console.log(exclude[i]);
+                console.log(repo.html_url);
+                console.log(repo.html_url == exclude[i]);
+                if (repo.html_url == exclude[i]) {
+                    output = false;
+                }
+            }
+
+            if (!output) {
+                continue;
+            }
+            
             if (description !== null) {
                 document.getElementById("repogrid").innerHTML += '\
             <a href="' + repo.html_url + '" target="_blank"> \
